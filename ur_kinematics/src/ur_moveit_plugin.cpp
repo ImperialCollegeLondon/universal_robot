@@ -336,7 +336,7 @@ bool URKinematicsPlugin::initialize(const std::string &robot_description,
   ur_link_names_.push_back(arm_prefix_ + "wrist_1_link");    // 5
   ur_link_names_.push_back(arm_prefix_ + "wrist_2_link");    // 6
   ur_link_names_.push_back(arm_prefix_ + "wrist_3_link");    // 7
-  ur_link_names_.push_back(arm_prefix_ + "ee_link");         // 8
+  ur_link_names_.push_back(arm_prefix_ + "flange");          // 8
 
   ur_joint_inds_start_ = getJointIndex(ur_joint_names_[0]);
 
