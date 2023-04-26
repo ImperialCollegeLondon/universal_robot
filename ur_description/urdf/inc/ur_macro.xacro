@@ -316,12 +316,23 @@
       <child link="${prefix}base"/>
     </joint>
 
+    
+    <!-- EE link; required by analytical solver -->
+    <link name="${prefix}ee_link" />
+    <joint name="${prefix}ee_fixed_joint" type="fixed">
+      <parent link="${prefix}wrist_3_link" />
+      <child link="${prefix}ee_link" />
+      <origin xyz="0 0 0" rpy="0.0 ${-pi/2.0} ${pi/2.0}" />
+    </joint>
+ 
+
     <!-- ROS-Industrial 'flange' frame: attachment point for EEF models -->
+    <!-- Modified to be based on ee_link -->
     <link name="${prefix}flange" />
     <joint name="${prefix}wrist_3-flange" type="fixed">
-      <parent link="${prefix}wrist_3_link" />
+      <parent link="${prefix}ee_link" />
       <child link="${prefix}flange" />
-      <origin xyz="0 0 0" rpy="0 ${-pi/2.0} ${-pi/2.0}" />
+      <origin xyz="0 0 0" rpy="${pi} 0 0" />
     </joint>
 
     <!-- ROS-Industrial 'tool0' frame: all-zeros tool frame -->
